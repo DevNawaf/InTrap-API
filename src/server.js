@@ -15,7 +15,7 @@ const {
 
 const app = express();
 const port = Number(process.env.PORT || 8000);
-const apiPrefix = "/intrap/api/v1";
+const apiPrefix = "/api/v1";
 
 app.use(cors());
 app.use(express.json());
