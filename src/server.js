@@ -15,6 +15,7 @@ const {
 
 const app = express();
 const port = Number(process.env.PORT || 8000);
+const apiPrefix = "/intrap/api/v1";
 
 app.use(cors());
 app.use(express.json());
@@ -24,11 +25,11 @@ app.get("/health", async (req, res) => {
   res.json({ status: "ok" });
 });
 
-app.post("/api/v1/gallery-detections", createDetection);
-app.get("/api/v1/gallery-detections", listDetections);
-app.get("/api/v1/gallery-detections/:id", getDetection);
-app.put("/api/v1/gallery-detections/:id", updateDetection);
-app.delete("/api/v1/gallery-detections/:id", deleteDetection);
+app.post(`${apiPrefix}/gallery-detections`, createDetection);
+app.get(`${apiPrefix}/gallery-detections`, listDetections);
+app.get(`${apiPrefix}/gallery-detections/:id`, getDetection);
+app.put(`${apiPrefix}/gallery-detections/:id`, updateDetection);
+app.delete(`${apiPrefix}/gallery-detections/:id`, deleteDetection);
 
 app.use((err, req, res, next) => {
   console.error(err);

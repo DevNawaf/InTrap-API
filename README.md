@@ -1,15 +1,15 @@
 # InTrap API (Node.js + PostgreSQL + Docker)
 
-Node.js API for `intrap.sanadais.com/api/v1` using PostgreSQL table `gallery_detections`.
+Node.js API for `intrap.sanadais.com/intrap/api/v1` using PostgreSQL table `gallery_detections`.
 
 ## Endpoints
 
 - `GET /health`
-- `POST /api/v1/gallery-detections`
-- `GET /api/v1/gallery-detections`
-- `GET /api/v1/gallery-detections/:id`
-- `PUT /api/v1/gallery-detections/:id`
-- `DELETE /api/v1/gallery-detections/:id`
+- `POST /intrap/api/v1/gallery-detections`
+- `GET /intrap/api/v1/gallery-detections`
+- `GET /intrap/api/v1/gallery-detections/:id`
+- `PUT /intrap/api/v1/gallery-detections/:id`
+- `DELETE /intrap/api/v1/gallery-detections/:id`
 
 ## Fields handled
 
@@ -44,7 +44,7 @@ API will be available on `http://localhost:3200`.
 ## Example create request
 
 ```bash
-curl -X POST http://localhost:3200/api/v1/gallery-detections \
+curl -X POST http://localhost:3200/intrap/api/v1/gallery-detections \
   -H "Content-Type: application/json" \
   -d '{
     "device_id": "cam-01",
