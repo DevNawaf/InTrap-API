@@ -9,8 +9,18 @@ services:
       - .env
     depends_on:
       - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.intrap-api.rule=(Host(`sanadais.com`) || Host(`intrap.sanadais.com`)) && PathPrefix(`/intrap/api/v1`)"
+      - "traefik.http.routers.intrap-api.entrypoints=websecure"
+      - "traefik.http.routers.intrap-api.tls=true"
+      - "traefik.http.services.intrap-api.loadbalancer.server.port=3200"
+      - "traefik.docker.network=${TRAEFIK_NETWORK:-traefik-public}"
     ports:
       - "3200:3200"
+    networks:
+      - default
+      - traefik-public
 
   db:
     image: postgres:16-alpine
@@ -25,3 +35,8 @@ services:
 
 volumes:
   postgres_data:
+
+networks:
+  traefik-public:
+    external: true
+    name: ${TRAEFIK_NETWORK:-traefik-public}

@@ -41,6 +41,19 @@ docker compose up --build
 
 API will be available on `http://localhost:3200`.
 
+## Traefik routing
+
+This service is configured for Traefik with:
+- Host: `sanadais.com` or `intrap.sanadais.com`
+- Path prefix: `/intrap/api/v1`
+- Target container port: `3200`
+
+If your Traefik Docker network is not `traefik-public`, set:
+
+```bash
+TRAEFIK_NETWORK=your_traefik_network_name
+```
+
 ## Example create request
 
 ```bash
