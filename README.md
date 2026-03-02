@@ -24,15 +24,6 @@ Node.js API for `intrap.sanadais.com/intrap/api/v1` using PostgreSQL table `gall
 - `received_at`
 - `confidence`
 
-## Environment
-
-Use `.env` (already configured):
-
-- `POSTGRES_USER=apiuser`
-- `POSTGRES_PASSWORD=StrongApiPass2025`
-- `POSTGRES_DB=intrap`
-- `DATABASE_URL=postgresql://apiuser:StrongApiPass2025@db:5432/intrap`
-
 ## Run
 
 ```bash
@@ -43,16 +34,12 @@ API will be available on `http://localhost:3200`.
 
 ## Traefik routing
 
-This service is configured for Traefik with:
-- Host: `sanadais.com` or `intrap.sanadais.com`
-- Path prefix: `/intrap/api/v1`
-- Target container port: `3200`
-
-If your Traefik Docker network is not `traefik-public`, set:
-
-```bash
-TRAEFIK_NETWORK=your_traefik_network_name
-```
+This service is configured in the same pattern as your working stack:
+- networks: `root_default` and `web` (both external)
+- host rule: `intrap.sanadais.com` or `sanadais.com`
+- path prefix: `/intrap/api/v1`
+- backend port: `3200`
+- certresolver: `letsencrypt`
 
 ## Example create request
 

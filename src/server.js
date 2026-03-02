@@ -25,6 +25,11 @@ app.get("/health", async (req, res) => {
   res.json({ status: "ok" });
 });
 
+app.get(`${apiPrefix}/health`, async (req, res) => {
+  await pool.query("SELECT 1");
+  res.json({ status: "ok" });
+});
+
 app.post(`${apiPrefix}/gallery-detections`, createDetection);
 app.get(`${apiPrefix}/gallery-detections`, listDetections);
 app.get(`${apiPrefix}/gallery-detections/:id`, getDetection);
