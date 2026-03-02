@@ -1,6 +1,6 @@
 # InTrap API (Node.js + PostgreSQL + Docker)
 
-Node.js API for `api.intrap.sanadais.com/api/v1` using PostgreSQL table `gallery_detections`.
+Node.js API for `intrap-api.sanadais.com/api/v1` using PostgreSQL table `gallery_detections`.
 
 ## Endpoints
 
@@ -36,7 +36,7 @@ API will be available on `http://localhost:3200`.
 
 This service is configured in the same pattern as your working stack:
 - networks: `root_default` and `web` (both external)
-- host rule: `intrap.sanadais.com` or `sanadais.com`
+- host rule: `intrap-api.sanadais.com`
 - path prefix: `/api/v1`
 - backend port: `3200`
 - certresolver: `letsencrypt`

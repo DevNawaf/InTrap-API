@@ -19,7 +19,7 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.intrap-api-v1.rule=Host(`api.intrap.sanadais.com`) && (PathPrefix(`/api/v1`) || Path(`/api/v1`))"
+      - "traefik.http.routers.intrap-api-v1.rule=Host(`intrap-api.sanadais.com`) && (PathPrefix(`/api/v1`) || Path(`/api/v1`))"
       - "traefik.http.routers.intrap-api-v1.priority=1000"
       - "traefik.http.routers.intrap-api-v1.entrypoints=websecure"
       - "traefik.http.routers.intrap-api-v1.tls.certresolver=letsencrypt"
