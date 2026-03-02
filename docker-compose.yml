@@ -19,7 +19,7 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.intrap-api-v1.rule=Host(`intrap.sanadais.com`) && (PathPrefix(`/api/v1`) || Path(`/api/v1`))"
+      - "traefik.http.routers.intrap-api-v1.rule=Host(`api.intrap.sanadais.com`) && (PathPrefix(`/api/v1`) || Path(`/api/v1`))"
       - "traefik.http.routers.intrap-api-v1.priority=1000"
       - "traefik.http.routers.intrap-api-v1.entrypoints=websecure"
       - "traefik.http.routers.intrap-api-v1.tls.certresolver=letsencrypt"
@@ -27,7 +27,7 @@ services:
       - "traefik.http.services.intrap-api-v1-svc.loadbalancer.server.port=3200"
       - "traefik.docker.network=web"
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3200/api/v1/health"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3200/api/v1/health"]
       interval: 30s
       timeout: 10s
       retries: 3

@@ -1,6 +1,6 @@
 # InTrap API (Node.js + PostgreSQL + Docker)
 
-Node.js API for `intrap.sanadais.com/api/v1` using PostgreSQL table `gallery_detections`.
+Node.js API for `api.intrap.sanadais.com/api/v1` using PostgreSQL table `gallery_detections`.
 
 ## Endpoints
 
