@@ -22,7 +22,7 @@ services:
       - "traefik.http.routers.intrap-api-v1.rule=Host(`intrap-api.sanadais.com`) && (PathPrefix(`/api/v1`) || Path(`/api/v1`))"
       - "traefik.http.routers.intrap-api-v1.priority=1000"
       - "traefik.http.routers.intrap-api-v1.entrypoints=websecure"
-      - "traefik.http.routers.intrap-api-v1.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.intrap-api-v1.tls.certresolver=mytlschallenge"
       - "traefik.http.routers.intrap-api-v1.service=intrap-api-v1-svc"
       - "traefik.http.services.intrap-api-v1-svc.loadbalancer.server.port=3200"
       - "traefik.docker.network=web"
