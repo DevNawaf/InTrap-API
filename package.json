@@ -5,7 +5,8 @@
   "description": "InTrap API (Node.js + PostgreSQL)",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "check": "node --check src/*.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

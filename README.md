@@ -11,6 +11,19 @@ Node.js API for `intrap-api.sanadais.com/api/v1` using PostgreSQL table `gallery
 - `PUT /api/v1/gallery-detections/:id`
 - `DELETE /api/v1/gallery-detections/:id`
 
+## Error format
+
+All non-2xx responses return:
+
+```json
+{
+  "code": "ERROR_CODE",
+  "message": "Human readable message",
+  "details": {},
+  "requestId": "uuid"
+}
+```
+
 ## Fields handled
 
 - `id`
@@ -23,6 +36,23 @@ Node.js API for `intrap-api.sanadais.com/api/v1` using PostgreSQL table `gallery
 - `captured_at`
 - `received_at`
 - `confidence`
+
+## Validation behavior
+
+- `image_name`, `image_path`, and `insect_name` are required non-empty strings.
+- `confidence` is accepted as:
+  - ratio in `[0, 1]` (converted to percentage), or
+  - percentage in `[0, 100]`.
+- Timestamps (`captured_at`, `received_at`) must be valid ISO strings.
+- `limit` must be a positive integer and is clamped to `200`.
+- `skip` must be a non-negative integer.
+
+## List query parameters
+
+- `limit` (optional): pagination page size (default `100`, max `200`)
+- `skip` (optional): offset (default `0`)
+- `since_received_at` (optional): ISO cursor timestamp for incremental fetch
+- `since_id` (optional): positive integer cursor tiebreaker, requires `since_received_at`
 
 ## Run
 
@@ -39,7 +69,7 @@ This service is configured in the same pattern as your working stack:
 - host rule: `intrap-api.sanadais.com`
 - path prefix: `/api/v1`
 - backend port: `3200`
-- certresolver: `letsencrypt`
+- certresolver: `mytlschallenge`
 
 ## Example create request
 
